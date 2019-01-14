@@ -12,4 +12,5 @@
   - name: Install nodejs request library
     npm: 
       name: request
+      global: yes
       state: present
