@@ -12,7 +12,4 @@
   - name: Install nodejs request library
     npm: 
       name: request
-
-  - name: Install git
-    apt: 
-      name: git
+      state: present
