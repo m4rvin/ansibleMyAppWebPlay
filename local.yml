@@ -1,5 +1,6 @@
 - hosts: localhost
   become: true
+
   tasks:
   - name: Install nodejs
     apt: 
@@ -19,18 +20,10 @@
   - name: Download app repo
     git: 
       repo: https://github.com/m4rvin/MyApp
+      dest: ./MyApp
 
-  - name: Install forever (to run Node.js app).
-      npm: 
-        name: forever 
-        global: yes 
-        state: present
-    
-    - name: Check list of Node.js apps running.
-      command: forever list
-      register: forever_list
-      changed_when: false
+  - name: Change file rights
+    shell: sudo chmod +x MyApp/app/server.js 
 
-    - name: Start example Node.js app.
-      command: forever start ./MyApp/app/server.js
-      when: "forever_list.stdout.find('./MyApp/app/server.js') == -1"
+  - name: execute app
+    shell: nodejs ./MyApp/app/server.js
