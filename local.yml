@@ -8,9 +8,10 @@
   - name: Install npm
     apt: 
       name: npm
-    
+  
   - name: Install nodejs request library
     npm: 
+      registry: http://registry.npmjs.org/
       name: request
       global: yes
       state: present
