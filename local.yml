@@ -26,4 +26,4 @@
     shell: sudo chmod +x MyApp/app/server.js 
 
   - name: execute app
-    shell: nodejs ./MyApp/app/server.js
+    shell: nodejs ./MyApp/app/server.js > nodejs.out &
